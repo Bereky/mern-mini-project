@@ -1,0 +1,32 @@
+{
+  "name": "mern-mini-project-backend",
+  "version": "1.0.0",
+  "description": "Backend for Mern Mini Project",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bereky/mern-mini-project.git"
+  },
+  "author": "Bereket L.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bereky/mern-mini-project/issues"
+  },
+  "homepage": "https://github.com/Bereky/mern-mini-project#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-jwt": "^8.5.1",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.11.0",
+    "nodemon": "^3.1.9"
+  }
+}
