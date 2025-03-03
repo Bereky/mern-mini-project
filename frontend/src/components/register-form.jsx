@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { setToken } from "../redux/features/user/userSlice";
 import { useDispatch } from "react-redux";
 import { MoonLoader } from "react-spinners";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
   const {
@@ -12,7 +13,9 @@ const RegisterForm = () => {
     formState: { errors },
   } = useForm();
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const [createAccount, { data: response, isLoading, error, isSuccess }] =
     useCreateAccountMutation();
 
@@ -28,10 +31,6 @@ const RegisterForm = () => {
 
       dispatch(setToken(payload));
       navigate("/");
-    }
-
-    if (error) {
-      console.log(error);
     }
   }, [isLoading, error, isSuccess]);
 
