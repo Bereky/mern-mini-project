@@ -10,14 +10,14 @@ const TicketCard = ({ ticket, update }) => {
       className="bg-white rounded shadow-md p-4 flex flex-col gap-4 border border-zinc-100"
     >
       <div className="flex flex-col justify-between gap-4">
-        <div className="flex flex-row justify-between gap-4s">
-          <div className="flex flex-col justify-between gap-4s">
+        <div className="flex flex-row justify-between gap-4">
+          <div className="flex flex-col">
             <h3 className="text-lg font-bold">{ticket.title}</h3>
             <p className="text-gray-600 text-sm">
               {dayjs(ticket.createdAt).format("MMM D, YYYY h:mm A")}
             </p>
           </div>
-          <div className="">
+          <div className="min-w-24 flex items-start justify-end">
             {ticket.status === "Open" && (
               <span className="h-6 font-medium text-xs border border-amber-100 bg-amber-200 text-amber-600 rounded-md px-2 py-0.5">
                 <i className="fa fa-clock fa-xs mr-1"></i>
