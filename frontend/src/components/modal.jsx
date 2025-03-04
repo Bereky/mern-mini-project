@@ -43,15 +43,6 @@ const Modal = (props) => {
               {props.label}
             </h1>
           </div>
-          {/*  {props.close && (
-            <div
-              disabled={props.isLoading}
-              onClick={() => props.close({ state: false })}
-              className="w-auto h-auto flex justify-end items-center px-1"
-            >
-              <i className="fa-solid fa-xmark text-2xl cursor-pointer text-zinc-900 hover:text-zinc-600 rounded-full duration-300"></i>
-            </div>
-          )} */}
         </div>
         <div className="w-full h-full flex justify-start items-center flex-col text-zinc-800 overflow-y-auto">
           {props.children}
