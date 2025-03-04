@@ -7,12 +7,14 @@ import Header from "../../components/header";
 import Tickets from "../../components/tickets";
 import CreateTicketModal from "../../components/create-ticket-modal";
 import UpdateTicketModal from "../../components/update-ticket-modal";
+import { MoonLoader, ScaleLoader } from "react-spinners";
 
 const HomePage = () => {
   const { account, token } = useSelector((state) => state.user);
-  const { data, isLoading, isError, error, refetch } = useGetTicketsQuery({
-    token,
-  });
+  const { data, isLoading, isError, error, isFetching, refetch } =
+    useGetTicketsQuery({
+      token,
+    });
 
   const [updateModal, setUpdateModal] = useState({
     state: false,
@@ -64,11 +66,13 @@ const HomePage = () => {
             </button>
           )}
         </div>
-        {data && !isLoading && !isError && (
-          <Tickets data={data?.data} update={openUpdateModal} />
-        )}
-        {isLoading && <Skeleton />}
-        {isError && <Error error={error?.data?.message || error?.error} />}
+        <div className="relative h-full">
+          {data && !isLoading && !isError && (
+            <Tickets data={data?.data} update={openUpdateModal} />
+          )}
+          {isLoading && <Skeleton />}
+          {isError && <Error error={error?.data?.message || error?.error} />}
+        </div>
       </main>
     </div>
   );
@@ -76,7 +80,7 @@ const HomePage = () => {
 
 const Skeleton = () => {
   return (
-    <div className="w-full min-h-48 grid md:grid-cols-3 grid-cols-1 md:gap-6 gap-4 rounded-lg animate-pulse">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-6 gap-4 animate-pulse">
       <div className="col-span-1 min-h-48 skeleton bg-zinc-200 rounded-md"></div>
       <div className="col-span-1 min-h-48 skeleton bg-zinc-200 rounded-md"></div>
       <div className="col-span-1 min-h-48 skeleton bg-zinc-200 rounded-md"></div>
