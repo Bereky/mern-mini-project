@@ -1,5 +1,4 @@
 import authService from "../services/auth.service.js";
-
 import { loginSchema, registerSchema } from "../validations/auth.validation.js";
 
 class AuthController {
@@ -37,14 +36,14 @@ class AuthController {
 
       const response = await authService.login(value);
 
-      res.status(200).json({ success: true, data: response });
+      return res.status(200).json({ success: true, data: response });
     } catch (error) {
       return res.status(400).json({ success: false, message: error.message });
     }
   }
 
   async me(req, res) {
-    const {userId} = req.auth;
+    const { userId } = req.auth;
 
     try {
       const response = await authService.me(userId);
@@ -54,19 +53,6 @@ class AuthController {
       return res.status(403).json({ success: false, message: error.message });
     }
   }
-
-  /* async logout(req, res, next) {
-    const auth = req.auth;
-    try {
-      await authService.logout(auth);
-
-      return res
-        .status(200)
-        .json({ success: true, message: "Logout Success!" });
-    } catch (error) {
-      return res.status(400).json({ success: false, message: error.message });
-    }
-  } */
 }
 
 export default new AuthController();
