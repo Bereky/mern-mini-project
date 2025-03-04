@@ -1,10 +1,10 @@
-import { useForm } from "react-hook-form";
-import { useCreateAccountMutation } from "../redux/features/user/userService";
 import { useEffect } from "react";
-import { setToken } from "../redux/features/user/userSlice";
+import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { MoonLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
+import { setToken } from "../redux/features/user/userSlice";
+import { useCreateAccountMutation } from "../redux/features/user/userService";
 
 const RegisterForm = () => {
   const {
@@ -42,7 +42,7 @@ const RegisterForm = () => {
         </h2>
       </div>
 
-      {error?.data.message && (
+      {error?.data?.message && (
         <div className="mt-10 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 text-sm">
           {error.data.message}
         </div>
@@ -50,7 +50,6 @@ const RegisterForm = () => {
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-          {/* Name Field */}
           <div>
             <label
               htmlFor="name"
@@ -67,6 +66,10 @@ const RegisterForm = () => {
                   minLength: {
                     value: 2,
                     message: "Name must be at least 2 characters long",
+                  },
+                  maxLength: {
+                    value: 50,
+                    message: "Name must be 50 characters or less",
                   },
                 })}
                 className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm ${
@@ -91,7 +94,7 @@ const RegisterForm = () => {
             <div className="mt-2">
               <select
                 {...register("role", {
-                  required: "title is required",
+                  required: "role is required",
                 })}
                 className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm ${
                   errors.role ? "outline-red-500" : ""
@@ -110,7 +113,6 @@ const RegisterForm = () => {
             </div>
           </div>
 
-          {/* Email Field */}
           <div>
             <label
               htmlFor="email"
@@ -141,7 +143,6 @@ const RegisterForm = () => {
             </div>
           </div>
 
-          {/* Password Field */}
           <div>
             <label
               htmlFor="password"
@@ -159,6 +160,10 @@ const RegisterForm = () => {
                     value: 6,
                     message: "Password must be at least 6 characters long",
                   },
+                  maxLength: {
+                    value: 50,
+                    message: "Password must be 50 characters or less",
+                  },
                 })}
                 className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm ${
                   errors.password ? "outline-red-500" : ""
@@ -172,7 +177,6 @@ const RegisterForm = () => {
             </div>
           </div>
 
-          {/* Submit Button */}
           <div>
             <button
               disabled={isLoading}
@@ -184,7 +188,6 @@ const RegisterForm = () => {
           </div>
         </form>
 
-        {/* Sign In Link */}
         <p className="mt-10 text-center text-sm text-gray-500">
           Have an account?{" "}
           <a

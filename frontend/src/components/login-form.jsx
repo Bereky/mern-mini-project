@@ -49,7 +49,6 @@ export const LoginForm = () => {
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-          {/* Email Field */}
           <div>
             <label
               htmlFor="email"
@@ -80,7 +79,6 @@ export const LoginForm = () => {
             </div>
           </div>
 
-          {/* Password Field */}
           <div>
             <label
               htmlFor="password"
@@ -98,6 +96,10 @@ export const LoginForm = () => {
                     value: 6,
                     message: "Password must be at least 6 characters long",
                   },
+                  maxLength: {
+                    value: 50,
+                    message: "Password must be 50 characters or less",
+                  },
                 })}
                 className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm ${
                   errors.password ? "outline-red-500" : ""
@@ -111,7 +113,6 @@ export const LoginForm = () => {
             </div>
           </div>
 
-          {/* Submit Button */}
           <div>
             <button
               disabled={isLoading}

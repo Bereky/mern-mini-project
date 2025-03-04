@@ -55,6 +55,10 @@ const CreateTicketModal = (props) => {
               type="text"
               {...register("title", {
                 required: "title is required",
+                maxLength: {
+                  value: 50,
+                  message: "Title must be 50 characters or less",
+                },
               })}
               className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm ${
                 errors?.title ? "outline-red-500" : ""
@@ -84,6 +88,10 @@ const CreateTicketModal = (props) => {
                 minLength: {
                   value: 6,
                   message: "description must be at least 6 characters long",
+                },
+                maxLength: {
+                  value: 500,
+                  message: "description must be 500 characters or less",
                 },
               })}
               className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm ${
