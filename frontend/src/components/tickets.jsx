@@ -1,6 +1,9 @@
+import { useSelector } from "react-redux";
 import TicketCard from "./ticket-card";
 
 const Tickets = (props) => {
+  const { account } = useSelector((state) => state.user);
+
   return (
     <div className="flex gap-4 flex-col">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-6 gap-4">
@@ -15,8 +18,14 @@ const Tickets = (props) => {
             No Tickets
           </h2>
           <p className="text-gray-500 text-center md:text-sm text-xs">
-            It looks like the you haven't attached any documents yet. Please
-            attach the required documents to get started.
+            {account.role === "user" && (
+              <span className="">It looks like you have no tickets.</span>
+            )}
+            {account.role === "admin" && (
+              <span className="">
+                It looks like there are no tickets in the system.
+              </span>
+            )}
           </p>
         </div>
       )}
