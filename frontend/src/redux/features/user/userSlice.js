@@ -10,7 +10,6 @@ if (tokenExist && tokenExist !== "undefined") {
 }
 
 const initialState = {
-  isLoggedIn: null,
   token: token ? token : null,
   account: {
     userId: null,
