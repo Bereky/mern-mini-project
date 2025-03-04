@@ -78,8 +78,6 @@ class TicketService {
       const user = await User.findById(userId);
       const ticket = await Ticket.findById(id);
 
-      console.log(ticket);
-
       if (!ticket) {
         throw new Error("Ticket is not found!");
       }
@@ -125,6 +123,12 @@ class TicketService {
   async update(userId, ticketId, payload) {
     try {
       const { title, description, status } = payload;
+
+      const validateTicketId = isValidObjectId(ticketId);
+
+      if (!validateTicketId) {
+        throw new Error("Invalid Ticket Id");
+      }
 
       const user = await User.findById(userId);
       const ticket = await Ticket.findById(ticketId);
