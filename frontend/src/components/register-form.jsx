@@ -177,7 +177,7 @@ const RegisterForm = () => {
             <button
               disabled={isLoading}
               type="submit"
-              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="h-8 flex w-full justify-center items-center rounded-md bg-indigo-600 px-3 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 disabled:bg-indigo-400 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               {isLoading ? <MoonLoader size={10} color="white" /> : "Register"}
             </button>
