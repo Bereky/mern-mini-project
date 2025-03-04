@@ -33,12 +33,10 @@ class TicketController {
       const { userId } = req.auth;
       const response = await ticketService.getTickets(userId);
 
-      setTimeout(() => {
-        return res.status(200).json({
-          success: true,
-          data: response,
-        });
-      }, 3000);
+      return res.status(200).json({
+        success: true,
+        data: response,
+      });
     } catch (error) {
       return res.status(400).json({ success: false, message: error.message });
     }
@@ -57,13 +55,11 @@ class TicketController {
 
       const response = await ticketService.getTicket(userId, value);
 
-      setTimeout(() => {
-        return res.status(200).json({
-          success: true,
-          data: response,
-          message: null,
-        });
-      }, 2000);
+      return res.status(200).json({
+        success: true,
+        data: response,
+        message: null,
+      });
     } catch (error) {
       return res.status(400).json({ success: false, message: error.message });
     }
